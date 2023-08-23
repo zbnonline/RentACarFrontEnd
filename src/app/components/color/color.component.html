@@ -2,17 +2,15 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded == true" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Renk Kodu</th>
-      <th>Renk</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let color of colors">
-      <td>{{color.colorId}}</td>
-      <td>{{color.colorName}}</td>
-    </tr>
-  </tbody>
-</table>
+<h4>Renkler</h4>
+<ul class="list-group">
+  <li *ngFor="let color of colors"
+  [class]="getCurrentColorClass(color)"
+  (click)="setCurrentColor(color)"
+  routerLink="cars/color/{{color.colorId}}">
+  {{color.colorName}}
+</li>
+</ul>
+
+<h5 *ngIf="currentColor" >{{currentColor.colorName}} seçtiniz</h5>
+
